@@ -20,17 +20,6 @@ function App() {
       {title:'card 10',clicked:false},
     ]
   );
-  
-  const shuffleCards = () => {
-    let cardsList = [...cards];
-
-    for(let i=cardsList.length-1;i>0;i--) {
-        let j = Math.floor(Math.random()*(i+1));
-        [cardsList[i],cardsList[j]] = [cardsList[j],cardsList[i]];
-    }
-
-    setCards(cardsList);
-  }
 
   const handleClick = (clickedTitle) => {
     let clickedCard = cards.find(card => card.title === clickedTitle);
@@ -50,7 +39,6 @@ function App() {
         return card;
       }));
     }
-    shuffleCards();
   }
 
   return (
@@ -65,7 +53,6 @@ function App() {
       />
       <Gameboard 
         cards={cards}
-        shuffleCards={shuffleCards}
         handleCardClick={handleClick}
       />
     </div>

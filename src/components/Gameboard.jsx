@@ -1,16 +1,25 @@
 import React,{useEffect} from "react";
 
-const Gameboard = ({cards,shuffleCards,handleCardClick})=> {
+const Gameboard = ({cards,handleCardClick})=> {
+
+    useEffect(()=> {
+        shuffleCards();
+    });
+
+    let cardsList = [...cards];
 
     const handleClick = (event) => {
         handleCardClick(event.target.id);
     };
 
-    useEffect(()=> {
-        shuffleCards();
-    },[]);
+    const shuffleCards = () => {
+        for(let i=cardsList.length-1;i>0;i--) {
+            let j = Math.floor(Math.random()*(i+1));
+            [cardsList[i],cardsList[j]] = [cardsList[j],cardsList[i]];
+        }
+    };
 
-    const renderedCards = cards.map((item,index)=> (
+    const renderedCards = cardsList.map((item,index)=> (
         <div key={index} onClick={handleClick} id={item.title}>{item.title}</div>
     ));
 
