@@ -1,15 +1,11 @@
-import React,{useEffect} from "react";
+import React from "react";
 
 const Gameboard = ({cards,handleCardClick})=> {
-
-    useEffect(()=> {
-        shuffleCards();
-    });
 
     let cardsList = [...cards];
 
     const handleClick = (event) => {
-        handleCardClick(event.target.id);
+        handleCardClick(event.target.alt);
     };
 
     const shuffleCards = () => {
@@ -17,14 +13,15 @@ const Gameboard = ({cards,handleCardClick})=> {
             let j = Math.floor(Math.random()*(i+1));
             [cardsList[i],cardsList[j]] = [cardsList[j],cardsList[i]];
         }
+        return(cardsList);
     };
 
-    const renderedCards = cardsList.map((item,index)=> (
-        <div key={index} onClick={handleClick} id={item.title}>{item.title}</div>
+    const renderedCards = shuffleCards().map((item,index)=> (
+        <img key={index} onClick={handleClick} src={item.url} alt={item.title} className="p-2 border-solid border-black border-4 w-[70%] h-64 sm:w-[25%] sm:h-96"></img>
     ));
 
     return(
-        <div>
+        <div className="flex flex-col items-center gap-6 w-full sm:px-14 sm:flex-row sm:flex-wrap sm:flex-initial sm:justify-between sm:gap-14">
             {renderedCards}
         </div>
     );
