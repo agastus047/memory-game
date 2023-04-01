@@ -17,7 +17,7 @@ const Gameboard = ({cards,handleCardClick})=> {
     };
 
     const renderedCards = shuffleCards().map((item,index)=> (
-        <img key={index} onClick={handleClick} src={item.url} alt={item.title} className="p-2 border-solid border-black border-4 w-[70%] h-64 sm:w-[25%] sm:h-96"></img>
+        <img key={index} onClick={handleClick} src={item.url} alt={item.title} className="p-2 border-solid border-black border-4 w-[70%] h-64 sm:w-[25%] sm:h-96 sm:hover:rotate-3 sm:hover:shadow-2xl sm:hover:shadow-slate-900"></img>
     ));
 
     return(

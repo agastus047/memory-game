@@ -52,9 +52,9 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div className='text-center font-limelight px-4'>
-        <div className='my-8 text-2xl'>Memory Game</div>
+    <div className="App min-h-full h-max bg-amber-50">
+      <div className='text-center font-limelight px-4 text-gray-50 bg-slate-900 py-2 sm:py-5'>
+        <div className='my-8 text-2xl sm:text-4xl'>Memory Game</div>
         <div>Get points by clicking on an image but don't click on any more than once!</div>
       </div>
       <Scorecard
