@@ -34,6 +34,7 @@ function App() {
   const handleClick = (clickedTitle) => {
     let clickedCard = cards.find(card => card.title === clickedTitle);
     if(clickedCard.clicked) {
+      alert('Oops! You clicked the same card twice');
       if(score>highScore) {
         setHighScore(score);
       }
@@ -41,13 +42,21 @@ function App() {
       setCards(cards.map((card) => { return { ...card, clicked: false } }));
     }
     else {
-      setScore(score+1);
+      setScore(score => score+1);
+      if(score+1===cards.length) {
+        alert('You won!');
+        setHighScore(score+1);
+        setScore(0);
+        setCards(cards.map((card) => { return { ...card, clicked: false } }));
+      }
+      else {
       setCards(cards.map(card => {
         if(card.title === clickedCard.title) {
           return {...card,clicked: true};
         }
         return card;
       }));
+      }
     }
   }
 
